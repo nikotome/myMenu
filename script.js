@@ -1,4 +1,6 @@
-$(document).ready(function() {
+document.addEventListener('DOMContentLoaded', () => {
+
+    const navIcon = document.getElementById('nav-icon');
 
     const showMenu = () => {
         $("nav").animate({left: '0'}, 200);
@@ -10,22 +12,20 @@ $(document).ready(function() {
         $('#nav-icon').removeClass('open');
     }
 
-    $('#nav-icon').click(function() {
-
-        if ($(this).hasClass('open')) {
+    navIcon.addEventListener('click', () => {        
+        if (navIcon.classList.contains('open')) {
             hideMenu();
         } else {
             showMenu();
-            $(this).addClass('open')
-        }       
+            navIcon.classList.add('open');
+        }
     });
 
     $(window).resize(function() {
-        
-        if ($('#nav-icon').hasClass('open')) {
+        if(navIcon.classList.contains('open')) {
             hideMenu();         
             $("#menuRes").animate({left: '0'}, 200);            
-            $('#nav-icon').removeClass('open');
-        }
-    });    
+            navIcon.classList.remove('open');
+        }        
+    });  
 });
